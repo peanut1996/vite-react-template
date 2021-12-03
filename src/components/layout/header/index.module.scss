@@ -1,0 +1,36 @@
+.header {
+  padding: 0;
+  background-color: #fff;
+  .trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    display: inline-block;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .user {
+    float: right;
+    margin-right: 16px;
+    .utils {
+      display: inline-block;
+      position: relative;
+      padding: 0 15px;
+      font-size: 16px;
+      vertical-align: middle;
+      &::after {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        content: '';
+        width: 1px;
+        height: 40%;
+        background-color: #ccc;
+      }
+    }
+    .username {
+      cursor: pointer;
+    }
+  }
+}

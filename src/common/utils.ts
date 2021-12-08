@@ -27,16 +27,3 @@ export function trimBlankToUndefined<T>(inputValue: T | T[]): T | T[] {
   });
   return current;
 }
-
-export const formatOrganizationTree = (organizations: any[], pid = 0): any[] => {
-  const target = organizations
-    .filter((item) => item.parentId === pid)
-    .map((item) => {
-      return {
-        title: item.name,
-        key: item.id.toString(),
-        children: formatOrganizationTree(organizations, item.id),
-      };
-    });
-  return target;
-};

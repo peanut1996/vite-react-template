@@ -3,9 +3,9 @@ import 'nprogress/nprogress.css';
 import { message } from 'antd';
 import axios, { AxiosRequestConfig } from 'axios';
 import NProgress from 'nprogress';
-import { IResponse } from 'supremind';
 import URI from 'urijs';
 
+import { IResponse } from './interfaces/commons';
 import { trimBlankToUndefined } from './utils';
 
 const service = axios.create({
@@ -34,10 +34,12 @@ const httpCode = {
 
 /** 添加请求拦截器 * */
 service.interceptors.request.use(
-  (config) => {
+  (config: AxiosRequestConfig) => {
     // 添加进度条（开始）
     NProgress.start();
-    config.headers.token = sessionStorage.getItem('token') || '';
+    if (config.headers) {
+      config.headers.token = sessionStorage.getItem('token') || '';
+    }
     return config;
   },
   (error) => {
@@ -103,7 +105,7 @@ export function addUrlQuery(config: RequestConfig) {
   config.url = uri.readable();
 }
 
-const request = (config: AxiosRequestConfig, useMock = false) => {
+const request = (config: AxiosRequestConfig) => {
   return new Promise<IResponse<any>>((resolve, reject) => {
     // 解决 ie11 ajax 缓存问题
     if (!config.method || config.method.toUpperCase() === 'GET') {

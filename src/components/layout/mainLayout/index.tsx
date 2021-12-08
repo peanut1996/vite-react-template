@@ -1,6 +1,6 @@
+import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { matchRoutes, renderRoutes, RouteConfig, RouteConfigComponentProps } from 'react-router-config';
-import { Breadcrumb, Layout, Menu } from 'supremind';
+import { matchRoutes, renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 
 import { IMenuConfig, IRouteConfigExt } from '@/common/models/routes';
 import getMenus from '@/config/menus';

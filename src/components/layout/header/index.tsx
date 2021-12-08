@@ -1,6 +1,6 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown, Layout, Menu, Space } from 'antd';
 import React from 'react';
-import { Avatar, Dropdown, Layout, Menu, Space } from 'supremind';
 
 // import siteConfig from "/assets/sitemode.json";
 import styles from './index.module.scss';

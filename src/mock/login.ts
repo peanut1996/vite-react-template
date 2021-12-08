@@ -6,7 +6,7 @@ const { Random } = Mock;
 export default [
   {
     url: '/api/login',
-    type: 'get',
+    type: 'post',
     response: () => {
       return {
         code: 0,

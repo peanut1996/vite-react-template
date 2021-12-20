@@ -5,10 +5,9 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import moment from 'moment';
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
-import { BrowserRouter } from 'react-router-dom';
 
-import { layoutRoutes } from './config/routes';
+import { renderRoutes, routes } from './config/routes';
+
 moment.locale('zh-cn');
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
         return document.body;
       }}
     >
-      <BrowserRouter>{renderRoutes(layoutRoutes)}</BrowserRouter>
+      {renderRoutes(routes)}
     </ConfigProvider>
   );
 };

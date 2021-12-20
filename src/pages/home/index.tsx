@@ -12,10 +12,6 @@ const { confirm } = Modal;
 const index = (props: any) => {
   const [visible, setVisible] = useState(false);
 
-  const ss = () => {
-    console.log(1);
-  };
-
   return (
     <div>
       {homeStore.ChangeConunt}

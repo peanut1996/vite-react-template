@@ -1,10 +1,9 @@
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
-import { matchRoutes, renderRoutes, RouteConfigComponentProps } from 'react-router-config';
+import { Outlet, useNavigate } from 'react-router-dom';
 
-import { IMenuConfig, IRouteConfigExt } from '@/common/models/routes';
+import { IMenuConfig } from '@/common/models/routes';
 import getMenus from '@/config/menus';
-import { createMainRoutes } from '@/config/routes';
 
 import CommonHeader from '../header';
 import styles from './index.module.scss';
@@ -14,24 +13,15 @@ const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
 
-interface BaseLayoutProps extends RouteConfigComponentProps {
-  route: IRouteConfigExt;
-}
-
-const MainLayout: React.FC<BaseLayoutProps> = (props) => {
+const MainLayout: React.FC = () => {
   // 控制侧边栏显示、隐藏
   const [collapsed, setCollapsed] = useState<boolean>(false);
-  // layout下的路由获取
-  const mainRoutes = createMainRoutes();
+  const navigate = useNavigate();
+
   const menus = getMenus();
-  let currentMenus: any[] = [];
-  if (mainRoutes) {
-    currentMenus = matchRoutes(menus, props.location.pathname).map((item) => item.route);
-  }
 
   const clickMenu = (value: any) => {
-    console.log(value);
-    props.history.push(value.key);
+    navigate(value.key);
   };
 
   const renderTitle = (item: IMenuConfig) => {
@@ -70,7 +60,9 @@ const MainLayout: React.FC<BaseLayoutProps> = (props) => {
         <CommonHeader collapsed={collapsed} setCollapsed={setCollapsed} />
         {/* <Breadcrumb menus={currentMenus} /> */}
         <Content className={styles.content}>
-          <div className={styles.render}>{renderRoutes(mainRoutes)}</div>
+          <div className={styles.render}>
+            <Outlet />
+          </div>
         </Content>
         <Footer className={styles.footer}>Copyright © 2019-2020 闪马智能 沪ICP备 12020087号</Footer>
       </Layout>

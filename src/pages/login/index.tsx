@@ -1,22 +1,22 @@
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, message } from 'antd';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { login } from '@/apis';
 
 import styles from './index.module.scss';
 
 const Login: React.FC<any> = () => {
-  let history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
     setLoading(true);
     const res = await login(values);
     if (res.code === 0) {
       message.success('登录成功');
-      history.push('/main/home');
+      navigate('/main/home');
     }
   };
 

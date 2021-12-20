@@ -6,6 +6,13 @@ const getMenus = () => {
       name: 'home',
       path: `/main/home`,
       isShow: true,
+      showChild: false,
+    },
+    {
+      name: 'about',
+      path: `/main/about`,
+      isShow: true,
+      showChild: false,
     },
   ];
   return menus;
